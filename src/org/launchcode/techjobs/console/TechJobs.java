@@ -1,8 +1,6 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -110,7 +108,24 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
-        System.out.println("printJobs is not implemented yet");
+        Set<String> keys;
+        for (HashMap<String, String> job : someJobs){
+            keys = job.keySet();
+            System.out.println("*****");
+            for (String key : keys){
+                System.out.println(key + ": " + job.get(key));
+            }
+            System.out.println("*****");
+        }
     }
 }
+
+/*
+*****
+position type: Data Scientist / Business Intelligence
+name: Sr. IT Analyst (Data/BI)
+employer: Bull Moose Industries
+location: Saint Louis
+core competency: Statistical Analysis
+*****
+ */

@@ -108,14 +108,19 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        Set<String> keys;
-        for (HashMap<String, String> job : someJobs){
-            keys = job.keySet();
-            System.out.println("*****");
-            for (String key : keys){
-                System.out.println(key + ": " + job.get(key));
+        if(someJobs.size() == 0){
+            System.out.println("No jobs found with that term");
+        }
+        else{
+            Set<String> keys;
+            for (HashMap<String, String> job : someJobs){
+                keys = job.keySet();
+                System.out.println("*****");
+                for (String key : keys){
+                    System.out.println(key + ": " + job.get(key));
+                }
+                System.out.println("*****");
             }
-            System.out.println("*****");
         }
     }
 }

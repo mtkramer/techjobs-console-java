@@ -52,8 +52,8 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> allJobsClone = new ArrayList<>();
-        Set<String> keys;
         HashMap<String, String> jobClone = new HashMap<>();
+        Set<String> keys;
         String valueClone;
         for(HashMap<String, String> job : allJobs){
             keys = job.keySet();
@@ -62,7 +62,7 @@ public class JobData {
                 jobClone.put(key, valueClone);
             }
             allJobsClone.add(jobClone);
-            jobClone = new HashMap<>();
+            jobClone.clear();
         }
 
         return allJobsClone;

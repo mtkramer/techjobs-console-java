@@ -51,7 +51,21 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        return allJobs;
+        ArrayList<HashMap<String, String>> allJobsClone = new ArrayList<>();
+        Set<String> keys;
+        HashMap<String, String> jobClone = new HashMap<>();
+        String valueClone;
+        for(HashMap<String, String> job : allJobs){
+            keys = job.keySet();
+            for(String key : keys){
+                valueClone = job.get(key);
+                jobClone.put(key, valueClone);
+            }
+            allJobsClone.add(jobClone);
+            jobClone = new HashMap<>();
+        }
+
+        return allJobsClone;
     }
 
     /**
@@ -100,7 +114,7 @@ public class JobData {
             Reader in = new FileReader(DATA_FILE);
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
             List<CSVRecord> records = parser.getRecords();
-            Integer numberOfColumns = records.get(0).size();
+            int numberOfColumns = records.get(0).size();
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
             allJobs = new ArrayList<>();
@@ -145,3 +159,10 @@ public class JobData {
     }
 
 }
+
+/*
+Returning a copy of allJobs: Look at JobData.findAll(). Notice that it’s returning the allJobs property,
+which is a static property of the JobData class. In general, this is not a great thing to do, since
+the person calling our findAll method could then mess with the data that allJobs contains. Fix this
+by creating a copy of allJobs. Hint: Look at the constructors in the Oracle ArrayList documentation.
+ */

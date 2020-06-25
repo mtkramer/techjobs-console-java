@@ -56,7 +56,7 @@ public class TechJobs {
 
                 // What is their search term?
                 System.out.println("\nSearch term: ");
-                String searchTerm = in.nextLine();
+                String searchTerm = in.nextLine().toLowerCase();
 
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
@@ -125,3 +125,8 @@ public class TechJobs {
     }
 }
 
+/*
+How can you do this without altering the capitalization of the items in allJobs so that the data
+gets printed out the same way that it appears in job_data.csv?
+You might find it useful to review the String methods listed in the chapter on Data Types.
+ */

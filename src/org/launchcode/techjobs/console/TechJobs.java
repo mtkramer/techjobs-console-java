@@ -109,7 +109,7 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         if(someJobs.size() == 0){
-            System.out.println("No jobs found with that term");
+            System.out.println("No jobs results found using that search");
         }
         else{
             Set<String> keys;
@@ -124,9 +124,3 @@ public class TechJobs {
         }
     }
 }
-
-/*
-How can you do this without altering the capitalization of the items in allJobs so that the data
-gets printed out the same way that it appears in job_data.csv?
-You might find it useful to review the String methods listed in the chapter on Data Types.
- */

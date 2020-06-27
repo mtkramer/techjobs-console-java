@@ -112,11 +112,9 @@ public class TechJobs {
             System.out.println("No jobs results found using that search");
         }
         else{
-            Set<String> keys;
             for (HashMap<String, String> job : someJobs){
-                keys = job.keySet();
                 System.out.println("*****");
-                for (String key : keys){
+                for (String key : job.keySet()){
                     System.out.println(key + ": " + job.get(key));
                 }
                 System.out.println("*****");

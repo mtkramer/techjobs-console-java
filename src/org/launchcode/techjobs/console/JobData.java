@@ -53,11 +53,9 @@ public class JobData {
 
         ArrayList<HashMap<String, String>> allJobsClone = new ArrayList<>();
         HashMap<String, String> jobClone = new HashMap<>();
-        Set<String> keys;
         String valueClone;
         for(HashMap<String, String> job : allJobs){
-            keys = job.keySet();
-            for(String key : keys){
+            for(String key : job.keySet()){
                 valueClone = job.get(key);
                 jobClone.put(key, valueClone);
             }
@@ -143,11 +141,9 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-        Set<String> keys;
 
         for (HashMap<String, String> job : allJobs){
-            keys = job.keySet();
-            for(String key : keys){
+            for(String key : job.keySet()){
                 if(job.get(key).toLowerCase().contains(searchTerm)){
                     jobs.add(job);
                     break;

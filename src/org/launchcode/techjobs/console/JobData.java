@@ -60,7 +60,7 @@ public class JobData {
                 jobClone.put(key, valueClone);
             }
             allJobsClone.add(jobClone);
-            jobClone.clear();
+            jobClone = new HashMap<>();
         }
 
         return allJobsClone;

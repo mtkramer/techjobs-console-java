@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class TechJobs {
 
-    private static Scanner in = new Scanner(System.in);
+    private static final Scanner in = new Scanner(System.in);
 
     public static void main (String[] args) {
 
@@ -49,7 +49,7 @@ public class TechJobs {
                     }
                 }
 
-            } else { // choice is "search"
+            } else if (actionChoice.equals("search")) { // choice is "search"
 
                 // How does the user want to search (e.g. by skill or employer)
                 String searchField = getUserSelection("Search by:", columnChoices);
@@ -63,6 +63,9 @@ public class TechJobs {
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
+            } else {
+                System.out.println("Exiting program");
+                System.exit(0);
             }
         }
     }
@@ -70,38 +73,33 @@ public class TechJobs {
     // ﻿Returns the key of the selected item from the choices Dictionary
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
-        Integer choiceIdx;
-        Boolean validChoice = false;
+        int choiceIdx;
         String[] choiceKeys = new String[choices.size()];
 
         // Put the choices in an ordered structure so we can
         // associate an integer with each one
-        Integer i = 0;
+        int i = 0;
         for (String choiceKey : choices.keySet()) {
             choiceKeys[i] = choiceKey;
             i++;
         }
 
-        do {
+        System.out.println("\n" + menuHeader);
 
-            System.out.println("\n" + menuHeader);
+        // Print available choices
+        for (int j = 0; j < choiceKeys.length; j++) {
+            System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
+        }
+        System.out.println(choiceKeys.length + " - Exit");
 
-            // Print available choices
-            for (Integer j = 0; j < choiceKeys.length; j++) {
-                System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
-            }
+        choiceIdx = in.nextInt();
+        in.nextLine();
 
-            choiceIdx = in.nextInt();
-            in.nextLine();
-
-            // Validate user's input
-            if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
-                System.out.println("Invalid choice. Try again.");
-            } else {
-                validChoice = true;
-            }
-
-        } while(!validChoice);
+        // Validate user's input
+        if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
+            System.out.println("Exiting program");
+            System.exit(0);
+        }
 
         return choiceKeys[choiceIdx];
     }
